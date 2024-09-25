@@ -3,6 +3,8 @@ plugins {
 }
 
 android {
+    // make sure to update the compileSdk and targetSdk version for
+    // your version of Android Studio
     namespace = "com.example.final_simple_shimmer_app"
     compileSdk = 34
 
@@ -42,7 +44,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     // make sure to install the OpenCSV jar file
     implementation("com.opencsv:opencsv:5.5.2")
-    // hello
     //make sure to install the GraphView jar file
     implementation("com.jjoe64:graphview:4.2.2")
 }
