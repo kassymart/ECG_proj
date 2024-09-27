@@ -1,4 +1,4 @@
-Application name: Simple Shimmer App
+**Application name: Simple Shimmer App**
 This project is UNDER PROGRESS! 
 Contents contains a smartphone application for the device Shimmer3 ECG that contains three electrodes: (Left Arm, Right Arm),
 (Left Arm, Left Leg), (Right Arm, Left Leg) to detect stress in an individual. 
