@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import android.os.Handler;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -83,11 +84,49 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void plotData(GraphView graph, ArrayList<double[]> data) {
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
-        for (double[] point : data) {
-            double x = point[0];
-            double y = point[1];
-            series.appendData(new DataPoint(x, y), true, data.size());
-        }
-        graph.addSeries(series);
+        graph.addSeries(series);  // Add the series to the graph
+
+        // Set the viewport to initially display the first portion of the data
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(10); // Adjust to your preferred window size (10 units in this case)
+
+        // Enable scrolling and scaling
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setScalable(true); // Allow zooming
+
+        // Handler to animate data points being added
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            private int currentIndex = 0;
+
+            @Override
+            public void run() {
+                if (currentIndex < data.size()) {
+                    // Get the next data point
+                    double[] point = data.get(currentIndex);
+                    double x = point[0];
+                    double y = point[1];
+
+                    // Add the data point to the series
+                    series.appendData(new DataPoint(x, y), true, data.size());
+
+                    // Update the viewport to scroll to the right
+                    graph.getViewport().setMinX(x - 10);  // Display the last 10 units
+                    graph.getViewport().setMaxX(x);  // Shift to the right as new data is added
+
+                    // Increment index for next data point
+                    currentIndex++;
+
+                    // Run this code again after a delay (e.g., 200 milliseconds)
+                    handler.postDelayed(this, 200); // Adjust the delay for smoothness
+                }
+            }
+        };
+
+        // Start the animation
+        handler.post(runnable);
     }
+
+
 }
