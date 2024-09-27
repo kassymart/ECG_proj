@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
           }
         });
 
-        // Enable edge-to-edge content
+        // Enable edge-to-edge content //
         EdgeToEdge.enable(this);
 
         // Set window insets for edge-to-edge display
