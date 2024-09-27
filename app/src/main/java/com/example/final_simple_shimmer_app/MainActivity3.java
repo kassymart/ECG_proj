@@ -51,7 +51,7 @@ public class MainActivity3 extends AppCompatActivity {
 
     private void readCSVFile() {
         try {
-            InputStream is = getResources().openRawResource(R.raw.datafive);  // Use your CSV file in the 'raw' folder
+            InputStream is = getResources().openRawResource(R.raw.datasix);  // Use your CSV file in the 'raw' folder
             CSVReader reader = new CSVReader(new InputStreamReader(is));
             List<String[]> csvData = reader.readAll();
             reader.close();
