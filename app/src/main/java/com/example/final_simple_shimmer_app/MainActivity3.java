@@ -4,23 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.util.List;
-
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -30,16 +27,15 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main3);
 
         // Initialize the button
         returnButton = findViewById(R.id.button_return);
 
-        // Initialize the table
+        // Initialize the table layout
         tableLayout = findViewById(R.id.tableLayout);
 
-        // Call the read CSVFile function
+        // Call the read CSVFile function to populate the table
         readCSVFile();
 
         // Set onClickListener to navigate back to MainActivity
@@ -48,7 +44,7 @@ public class MainActivity3 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity3.this, MainActivity.class);
                 startActivity(intent);
-                finish();  // Optional: call finish() to remove MainActivity2 from the back stack
+                finish();  // Optional: call finish() to remove MainActivity3 from the back stack
             }
         });
     }
@@ -60,9 +56,9 @@ public class MainActivity3 extends AppCompatActivity {
             List<String[]> csvData = reader.readAll();
             reader.close();
 
-            // Loop through CSV rows
+            // Loop through CSV rows and add each row to the table layout
             for (String[] row : csvData) {
-                addTableRow(row);  // Display each row in the table
+                addTableRow(row);
             }
         } catch (IOException | CsvException e) {
             e.printStackTrace();
@@ -73,13 +69,15 @@ public class MainActivity3 extends AppCompatActivity {
     private void addTableRow(String[] rowData) {
         TableRow tableRow = new TableRow(this);
 
+        // Loop through each cell in the row and add TextView to TableRow
         for (String cellData : rowData) {
             TextView textView = new TextView(this);
             textView.setText(cellData);
-            textView.setPadding(16, 16, 16, 16);
+            textView.setPadding(8, 8, 8, 8);  // Add some padding for a better look
             tableRow.addView(textView);
         }
 
+        // Add the row to the table layout
         tableLayout.addView(tableRow);
     }
 }
