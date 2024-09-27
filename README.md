@@ -7,4 +7,4 @@ graphs of the three electrodes along with a table view of the data points of the
 Future plans to this projects features a Bluetooth or equivalent connection to the smartphone application in order to control
 the streaming of the device and as well as enabling a real-time stress detection on the smartphone application. 
 For more details on the application, here's a link to the report
-([simple_shimmer.zip](https://github.com/user-attachments/files/17167820/simple_shimmer.zip))
+([simple_shimmer.zip](https://github.com/user-attachments/files/17168225/simple_shimmer.zip))
